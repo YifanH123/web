@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Analog Audio Equalizer</title>
+    <style>
+        /* --- REUSING CORE STYLES FROM PORTFOLIO --- */
+        :root {
+            --primary: #f59e0b;      /* Amber/Gold for Audio theme */
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --card-bg: #1e293b;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo { font-weight: 700; color: var(--light); font-size: 1.1rem; }
+        .logo span { color: var(--primary); }
+        .back-link { color: var(--gray); font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;}
+        .back-link:hover { color: var(--primary); transform: translateX(-5px); }
+
+        /* --- PROJECT HERO --- */
+        .project-header {
+            padding: 4rem 5% 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .project-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .project-header .subtitle { color: var(--primary); font-size: 1.2rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+
+        .hero-image-container {
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+            margin: 2rem auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Using the image from your folder */
+            background-image: url('images/EQ.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-color: #334155;
+        }
+
+        /* --- CONTENT GRID --- */
+        .content-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        h2 { font-size: 1.8rem; margin-bottom: 1rem; color: var(--light); border-left: 4px solid var(--primary); padding-left: 1rem; }
+        p { color: var(--gray); margin-bottom: 1.5rem; }
+
+        /* --- SIDEBAR SPECS --- */
+        .specs-card {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #334155;
+            height: fit-content;
+        }
+
+        .specs-card h3 { margin-bottom: 1.5rem; font-size: 1.2rem; border-bottom: 1px solid #334155; padding-bottom: 0.5rem; }
+        
+        .spec-item { margin-bottom: 1rem; }
+        .spec-label { display: block; font-size: 0.8rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.2rem; }
+        .spec-value { font-weight: 600; color: var(--light); font-size: 1.1rem; }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid #334155;
+            color: var(--gray);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .content-container { grid-template-columns: 1fr; }
+            .project-header h1 { font-size: 2rem; }
+            .hero-image-container { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="index.html" class="back-link">&larr; Back to Portfolio</a>
+        <div class="logo">Audio <span>Architect</span></div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="project-header">
+        <span class="subtitle">Signal Processing / Analog Circuitry</span>
+        <h1>Multi-Band Audio Equalizer</h1>
+        <p>A precision analog circuit for shaping audio frequencies using active filters and MOSFET amplification.</p>
+    </header>
+
+    <!-- HERO IMAGE -->
+    <div class="hero-image-container">
+        <img src="images/EQ.jpg" alt="Audio Equalizer Circuit" class="hero-image">
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content-container">
+        
+        <!-- LEFT COLUMN: Description -->
+        <div class="main-text">
+            <h2>Project Overview</h2>
+            <p>This project focused on the design and implementation of a modular audio equalizer. The goal was to create a device capable of boosting or cutting specific frequency bands (Bass, Treble) without introducing significant noise or harmonic distortion.</p>
+
+            <h2 style="margin-top: 2rem;">Technical Implementation</h2>
+            <p><strong>Active Filters:</strong> I utilized operational amplifiers (TL072) in a Sallen-Key topology to create 2nd-order Low-Pass and High-Pass filters. This allows for independent control over distinct frequency ranges.</p>
+            
+            <p><strong>Amplification Stage:</strong> The output stage features a Class AB amplifier design using complementary MOSFET pairs (IRF530/IRF9530). This configuration was chosen to balance power efficiency with linear signal reproduction, minimizing crossover distortion.</p>
+        </div>
+
+        <!-- RIGHT COLUMN: Specs Sidebar -->
+        <aside class="sidebar">
+            <div class="specs-card">
+                <h3>Technical Specs</h3>
+                
+                <div class="spec-item">
+                    <span class="spec-label">Frequency Bands</span>
+                    <span class="spec-value">2-Band (Low, High)</span>
+                </div>
+                
+                <div class="spec-item">
+                    <span class="spec-label">Op-Amps</span>
+                    <span class="spec-value">TL072 (Low Noise JFET)</span>
+                </div>
+
+                <div class="spec-item">
+                    <span class="spec-label">Output Power</span>
+                    <span class="spec-value">15W per Channel</span>
+                </div>
+
+                <div class="spec-item">
+                    <span class="spec-label">THD</span>
+                    <span class="spec-value">&lt; 0.1% @ 1kHz</span>
+                </div>
+
+                <div class="spec-item">
+                    <span class="spec-label">Cutoff Frequencies</span>
+                    <span class="spec-value">200Hz / 2.5kHz</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 Yifan Hu. <br><a href="mailto:email@example.com" style="color:var(--primary)">Contact me about this project</a></p>
+    </footer>
+
+</body>
+</html>
